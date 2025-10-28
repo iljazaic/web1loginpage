@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Notable&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+
+
+    <title>name</title>
+</head>
+
+<body>
+    <div class="mainDiv">
+
+
+        <div id="landingPage" style="top:50px">
+            <div id="startTitle">
+                <h1>name!</h1>
+                <span id="landingPage_span"> description goes here</span>
+
+            </div>
+
+            <div id="startPanel">
+                <button onclick="rollForwardTo(1)" name="start" id="start">Let's get started</button>
+            </div>
+        </div>
+
+        <div id="formSection">
+            <form id="form">
+            </form>
+        </div>
+
+
+
+    </div>
+
+    <script>
+
+
+
+        //in json so you can read this
+        let formStructure = [
+
+            {
+                //page 1
+                "id": "basicInfo",
+                "spanText": "These are necessary!",
+                "index": 1,
+                "inputs": [
+                    {
+                        "title": "Name",
+                        "name": "name",
+                        "type": "text",
+                        "placeholder": "Full Name",
+                        "mandatory": true
+                    },
+                    {
+                        "title": "Email",
+                        "name": "name",
+                        "type": "email",
+                        "placeholder": "Your Email",
+                        "mandatory": true
+                    },
+                    {
+                        "title": "Birthdate",
+                        "name": "birthdate",
+                        "type": "date",
+                        "placeholder": "",
+                        "mandatory": true
+                    }
+                ]
+
+            },
+
+            {
+                //page 2
+                "id": "profileInfo",
+                "spanText": "These are optional!",
+                "index": 2,
+                "inputs": [
+                    {
+                        "title": "Profile Image",
+                        "name": "image",
+                        "type": "file",
+                        "placeholder": "",
+                        "mandatory": false
+                    },
+                    {
+                        "title": "Nationality",
+                        "name": "nationality",
+                        "type": "text",
+                        "placeholder": "Your Nationality",
+                        "mandatory": false
+                    },
+                    {
+                        "title": "Hometown",
+                        "name": "hometown",
+                        "type": "text",
+                        "placeholder": "City Name",
+                        "mandatory": false
+                    }
+                ]
+            },
+            {
+                //page 3
+                "id": "personalInfo",
+                "spanText": "Tell us about yourself..",
+                "index": 3,
+                "inputs": [
+                    {
+                        "title": "Some Question",
+                        "name": "persquestion1",
+                        "type": "text",
+                        "placeholder": "Answer1",
+                        "mandatory": false
+                    },
+                    {
+                        "title": "Another Question",
+                        "name": "persquestion2",
+                        "type": "text",
+                        "placeholder": "Answer2",
+                        "mandatory": false
+                    },
+                    {
+                        "title": "Another Question2",
+                        "name": "persquestion3",
+                        "type": "text",
+                        "placeholder": "Answer3",
+                        "mandatory": false
+                    }
+                ]
+            }
+
+        ]
+        const TRANSITION_IN = '1s ease'
+
+        const TRANSITION_OUT = '1s ease'
+
+        const typingDelay = 10;//set to 0 if u annoyed by it idk if it works here
+
+
+
+        let currentPage = 0;
+
+        let pages = ["landingPage"];
+        let spanTexts = ["app description goes here"];
+
+        //this bitch builds the page from the json
+        //can be unreadable, bear with me here
+
+
+
+        formStructure.forEach(formPage => {
+            let questionString = ``;
+
+            formPage.inputs.forEach(input => {
+                questionString += `<label for="${input.id}">${input.title}: </label><input name="${input.name}" placeholder="${input.placeholder}"type="${input.type}" />\n`
+            });
+
+            let htmlElement = `
+            <section id="${formPage.id}" style="top:1000px">
+                    <input type="button" onclick="rollBackTo(${formPage.index - 1})" class="continue" name="back" value="" />
+                    <span id="${formPage.id}_span"></span>
+                    ${questionString}
+                    <input type="button" onclick="rollForwardTo(${formPage.index + 1})" class="continue back" name="continue" value="" />
+            </section>
+            `
+            document.querySelector('#form').innerHTML += htmlElement;
+
+            pages[pages.length] = formPage.id;
+            spanTexts[spanTexts.length] = formPage.spanText;
+        });
+
+
+
+        const submitElement = `                
+                <section id="finalConfirmation" style="top: 1000px;">
+                    <input type="button" onclick="rollBackTo(-1)" class="continue" name="back" value="" />
+
+                    <h2>
+                        You're all set!
+                    </h2>
+                    <span id="finalConfirmation_span">
+
+                    </span>
+
+                    <input id="submit" type="submit" value="Send Data">
+                </section>
+        `
+        document.querySelector('#form').innerHTML += submitElement;
+
+
+
+        pages[pages.length] = "finalConfirmation"
+        spanTexts[spanTexts.length] = "Make sure all the information is correct and hit confirm!"
+
+
+
+
+        function writeSpan(k, i) {
+
+            let txt = spanTexts[k]
+            let element = document.querySelector('#' + pages[k] + '_span');
+            if (i < txt.length) {
+                element.innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(() => {
+                    writeSpan(k, i)
+                }, typingDelay);
+            }
+        }
+
+        function clearSpan(k) {
+            console.log(k);
+            let element = document.querySelector('#' + pages[k] + '_span');
+            if (element.innerText.length > 0) {
+                element.innerText = element.innerText.slice(0, -1);
+                setTimeout(() => {
+                    clearSpan(k)
+                }, typingDelay);
+            }
+        }
+
+
+
+
+        function rollBackTo(page) {
+
+            if (page == -1) page = currentPage - 1;
+
+            currentPage = page;
+
+            var toPage = document.querySelector('#' + pages[page]);
+            var fromPage = document.querySelector('#' + pages[page + 1])
+
+            toPage.style.transition = TRANSITION_IN;
+            toPage.style.top = '50px';
+
+            writeSpan(page, 0)
+            clearSpan(page + 1)
+            toPage.style.position = 'absolute';
+
+            fromPage.style.transition = TRANSITION_OUT
+            fromPage.style.top = '1000px';
+        }
+
+
+
+        function rollForwardTo(page) {
+            currentPage = page;
+
+
+            console.log(pages[page])
+
+            var toPage = document.querySelector('#' + pages[page]);
+            var fromPage = document.querySelector('#' + pages[page - 1])
+
+
+            toPage.style.transition = TRANSITION_IN;
+            toPage.style.top = '50px';
+            toPage.style.position = 'absolute';
+
+
+            writeSpan(page, 0);
+            clearSpan(page - 1);
+            fromPage.style.transition = TRANSITION_OUT;
+            fromPage.style.top = '-800px';
+        }
+    </script>
+
+</body>
+
+</html>

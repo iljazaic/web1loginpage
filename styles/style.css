@@ -1,0 +1,239 @@
+body {
+    background-color: #590004;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+#startPanel {
+    width: 100%;
+    text-align: center;
+    margin-top: 80px;
+}
+
+
+#landingPage {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+
+#startPanel>button {
+
+
+    font-size: 25px;
+    text-align: center;
+    color: #F6F7EB;
+    background-color: transparent;
+    border: 3px solid #F6F7EB;
+    padding: 0;
+    padding: 15px;
+    font-family: "Montserrat", sans-serif;
+}
+
+#startPanel>button:hover {
+    cursor: pointer;
+
+}
+
+
+#startTitle {
+    width: 100%;
+    text-align: center;
+    color: #F6F7EB;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+#startTitle>h1 {
+    font-size: 120px;
+    margin: 0;
+    margin-top: 100px;
+    font-family: "Luckiest Guy", cursive;
+}
+
+
+
+#formSection {
+    width: 100%;
+    height: 100vh;
+    color: #F6F7EB;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+
+}
+
+section {
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 30%;
+    left: 35%;
+    position: relative;
+}
+
+section>label {
+    font-size: 30px;
+    text-align: left;
+    width: 100%;
+}
+
+#formSection>form>section>input {
+    background-color: transparent;
+    border: 3px #F6F7EB solid;
+    width: 100%;
+    height: 50px;
+    font-size: 30px;
+    color: #F6F7EB;
+
+
+
+    font-family: "Montserrat", sans-serif;
+
+}
+
+
+
+#formSection>form>section>input:hover {
+
+    cursor: auto;
+}
+
+#formSection>form>section>input::placeholder {
+    opacity: 0.5;
+}
+
+
+/*important to override the stupid css class before*/
+.continue {
+    position: relative;
+    left: 0px !important;
+    background-image: url('../resources/arrow.svg');
+    background-size: 150%;
+    background-position: -22.5px -10px;
+    margin-top: 50px;
+    background-color: #590004;
+    margin-bottom: 50px;
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 500px;
+    font-size: 100px !important;
+    line-height: 50px;
+}
+
+.back {
+    transform: rotate(180deg) !important;
+}
+
+.continue:hover {
+    cursor: pointer !important;
+}
+
+span {
+    font-size: 24px;
+}
+
+input {
+    transition: 1s ease;
+}
+
+section {
+    transition: 1s ease;
+}
+
+#form {
+    visibility: visible;
+}
+
+#basicInfo {
+    position: absolute;
+    top: 1200px;
+    transition: 1s ease-out;
+
+}
+
+#profileInfo {
+    position: relative;
+    top: 1200px;
+}
+
+#submit:hover {
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+    content: "Select File";
+    background: transparent;
+    color: #F6F7EB;
+    border: 1px solid #F6F7EB;
+    padding: 8px 12px;
+    border-radius: 0px;
+    width: 20%;
+    height: 80%;
+    top: 10%;
+    position: relative;
+    line-height: 80%;
+    font-size: 20px;
+    left: 1%;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: transparent;
+}
+
+@media only screen and (max-width: 768px) {
+    section {
+        width: 80%;
+        left: 10%;
+    }
+
+    #startTitle>h1 {
+        font-size: 0px;
+    }
+
+    #startPanel>button {
+        font-size: 20px;
+    }
+
+    section>label {
+        font-size: 24px;
+    }
+
+    #formSection>form>section>input {
+        font-size: 24px;
+        height: 40px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #startTitle>h1 {
+        font-size: 50px;
+        margin-top: 60px;
+    }
+
+    section>label {
+        font-size: 20px;
+    }
+
+    #formSection>form>section>input {
+        font-size: 20px;
+        height: 35px;
+    }
+
+    .continue {
+        width: 50px !important;
+        height: 50px !important;
+        line-height: 30px !important;
+        font-size: 50px !important;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-position: -10.6px -10px;
+    }
+}
