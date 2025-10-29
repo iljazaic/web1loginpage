@@ -1,0 +1,88 @@
+<html>
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&amp;family=Montserrat:ital,wght@0,100..900;1,100..900&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Notable&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+
+
+    <title>NYASH</title>
+</head>
+
+<body>
+    <div class="mainDiv">
+
+
+        <div id="landingPage" style="top:50px">
+            <div id="startTitle">
+                <h1>NYASH!</h1>
+                <span id="landingPage_span"> description goes here</span>
+
+            </div>
+
+            <div id="startPanel">
+                <button onclick="rollForwardTo(1)" name="start" id="start">Let's get started</button>
+            </div>
+        </div>
+
+        <div id="formSection">
+            <form id="form">
+
+                <section id="basicInfo" style="top:600px">
+                    <span id="basicInfo_span"></span>
+                    <label for="undefined">Name: </label><input name="name" placeholder="Full Name" type="text">
+                    <label for="undefined">Email: </label><input name="name" placeholder="Your Email" type="email">
+                    <label for="undefined">Birthdate: </label><input name="birthdate" placeholder="" type="date">
+
+                </section>
+
+                <section id="profileInfo" style="top:800px">
+                    <span id="profileInfo_span"></span>
+                    <label for="undefined">Profile Image: </label><input name="image" placeholder="" type="file">
+                    <label for="undefined">Nationality: </label><input name="nationality" placeholder="Your Nationality"
+                        type="text">
+                    <label for="undefined">Hometown: </label><input name="hometown" placeholder="City Name" type="text">
+
+                </section>
+
+                <section id="personalInfo" style="top:1000px">
+                    <span id="personalInfo_span"></span>
+                    <label for="undefined">Some Question: </label><input name="persquestion1" placeholder="Answer1"
+                        type="text">
+                    <label for="undefined">Another Question: </label><input name="persquestion2" placeholder="Answer2"
+                        type="text">
+                    <label for="undefined">Another Question2: </label><input name="persquestion3" placeholder="Answer3"
+                        type="text">
+
+                </section>
+
+                <section id="finalConfirmation" style="top: 1100px;">
+
+                    <h2>
+                        You're all set!
+                    </h2>
+                    <span id="finalConfirmation_span">
+
+                    </span>
+
+                    <input id="submit" type="submit" value="Send Data">
+                </section>
+            </form>
+        </div>
+
+
+
+    </div>
+
+
+</body>
+
+
+</html>
